@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GlazerCalculation.Properties;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -26,5 +27,31 @@ namespace GlazerCalculation
         {
             this.InitializeComponent();
         }
+
+        private void SubmitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Display();
+        }
+
+        public void Display()
+        {
+            double width = double.Parse(widthTxt.Text);
+            double height = double.Parse(heightTxt.Text);
+           
+
+            double woodLength = 2 * (width + height) * 3.25;
+
+            double glassArea = 2 * (width + height);
+
+            Glazer glazer = new Glazer(width, height, glassArea, woodLength);
+
+            woodLengthOutput.Text = glassArea.ToString();
+
+            //woodLengthOutput.Text = "The Length of the wood is " + woodLength.ToString() + " feet";
+
+          
+
+        } 
+
     }
 }
