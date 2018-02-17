@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -23,6 +24,19 @@ namespace GlazerCalculation
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        
+        double width = 0;
+        double height = 0;
+        double woodLength = 0;
+        double glassArea = 0;
+
+        public const double MAX_WIDTH = 5.0;
+        public const double MIN_WIDTH = 0.5;
+        public const double MAX_HEIGHT = 3.0;
+        public const double MIN_HEIGHT = 0.75;
+
+
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -33,25 +47,67 @@ namespace GlazerCalculation
             Display();
         }
 
-        public void Display()
+        private void widthTxt_KeyUp(object sender, KeyRoutedEventArgs e)
         {
-            double width = double.Parse(widthTxt.Text);
-            double height = double.Parse(heightTxt.Text);
            
 
-            double woodLength = 2 * (width + height) * 3.25;
+        }
 
-            double glassArea = 2 * (width + height);
 
-            Glazer glazer = new Glazer(width, height, glassArea, woodLength);
+        public void Display()
+        {
+            try
+            {
+                width = double.Parse(widthTxt.Text);
+                height = double.Parse(heightTxt.Text);
 
-            woodLengthOutput.Text = glassArea.ToString();
+                woodLength = 2 * (width + height) * 3.25;
+                glassArea = 2 * (width + height);
 
-            //woodLengthOutput.Text = "The Length of the wood is " + woodLength.ToString() + " feet";
+                if (width > MAX_WIDTH)
+                {
+                    WidthValidation.Text = "Width is too larage(Max is 5.0)";
+                    woodLengthOutput.Text = "0.00";
+                    glassAreaOutput.Text =  "0.00";
+                }
+                else if (width < MIN_WIDTH)
+                {
+                    WidthValidation.Text = "Width is too small(Min is 0.5)";
+                    woodLengthOutput.Text = "0.00";
+                    glassAreaOutput.Text = "0.00";
+                }
+            
+                else if (height > MAX_HEIGHT)
+                {
+                    heightValidation.Text = "Height is too larage(Max is 3.0)";
+                    woodLengthOutput.Text = "0.00";
+                    glassAreaOutput.Text = "0.00";
+                }
+                else if (height < MIN_HEIGHT)
+                {
+                    heightValidation.Text = "Height is too small(Min is 075)";
+                    woodLengthOutput.Text = "0.00";
+                    glassAreaOutput.Text =  "0.00";
+                    
+                }
+                else
+                {
+                    WidthValidation.Text = "";
+                    heightValidation.Text = "";
 
-          
+                    Glazer glazer = new Glazer(width, height, glassArea, woodLength);
 
-        } 
+                    woodLengthOutput.Text = woodLength + " feet";
+                    glassAreaOutput.Text = glassArea + " feet";
+                }
+
+            }
+            catch 
+            {
+               //
+            }
+
+        }
 
     }
 }

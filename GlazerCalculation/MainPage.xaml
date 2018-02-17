@@ -8,13 +8,16 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,0,3,0">
-        <TextBox x:Name="widthTxt" HorizontalAlignment="Left" Margin="523,187,0,0" Text="" VerticalAlignment="Top" Width="162" Height="45" FontSize="22"/>
-        <TextBlock HorizontalAlignment="Left" Margin="319,191,0,0" Text="Enter Glass Width:" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" FontWeight="Bold" Height="35" Width="215"/>
-        <TextBox x:Name="heightTxt" HorizontalAlignment="Left" Margin="524,252,0,0" Text="" VerticalAlignment="Top" Width="161" Height="45" FontSize="22"/>
-        <TextBlock HorizontalAlignment="Left" Margin="318,257,0,0" Text="Enter Glass Height:" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" FontWeight="Bold" Height="35" Width="215" RenderTransformOrigin="0.433,0.611"/>
+        <TextBox x:Name="widthTxt" HorizontalAlignment="Left" Margin="371,187,0,0" Text="" VerticalAlignment="Top" Width="162" Height="45" FontSize="22" FontFamily="Segoe UI"/>
+        <TextBlock HorizontalAlignment="Left" Margin="167,191,0,0" Text="Enter Glass Width:" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" FontWeight="Bold" Height="35" Width="215" FontFamily="Segoe UI"/>
+        <TextBox x:Name="heightTxt" HorizontalAlignment="Left" Margin="372,252,0,0" Text="" VerticalAlignment="Top" Width="161" Height="45" FontSize="22"/>
+        <TextBlock HorizontalAlignment="Left" Margin="166,257,0,0" Text="Enter Glass Height:" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" FontWeight="Bold" Height="35" Width="215" RenderTransformOrigin="0.433,0.611" FontFamily="Segoe UI"/>
         <Button x:Name="SubmitBtn" Content="Submit" HorizontalAlignment="Left" Margin="337,513,0,76" VerticalAlignment="Stretch" Width="316" Height="51" FontSize="22" Background="#3304050F" Click="SubmitBtn_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="370,68,0,0" Text="Glazer Calculation" FontSize="34" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top" Height="59"/>
         <TextBlock x:Name="woodLengthOutput" FontSize="22" FontWeight="Bold" HorizontalAlignment="Left" Margin="145,379,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="36" Width="293"/>
+        <TextBlock x:Name="glassAreaOutput" FontSize="22" FontWeight="Bold" HorizontalAlignment="Left" Margin="145,424,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="36" Width="293"/>
+        <TextBlock x:Name="WidthValidation"   HorizontalAlignment="Left" Margin="547,192,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" FontWeight="Bold" Height="35" Width="413" IsColorFontEnabled="True" Foreground="#FFFF0034"/>
+        <TextBlock x:Name="heightValidation"  HorizontalAlignment="Left" Margin="547,255,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" FontWeight="Bold" Height="35" Width="413" RenderTransformOrigin="1.33,1.543" Foreground="#FFFF0034"/>
 
 
 

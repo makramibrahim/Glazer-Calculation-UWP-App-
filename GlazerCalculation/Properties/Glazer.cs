@@ -13,6 +13,7 @@ namespace GlazerCalculation.Properties
         private double GlassArea  { get; set; }
         private double WoodLength { get; set; }
 
+    
         public Glazer(double width, double height, double glassArea, double woodLength)
         {
             this.Width = width;
@@ -20,5 +21,8 @@ namespace GlazerCalculation.Properties
             this.GlassArea = glassArea;
             this.WoodLength = woodLength;
         }
+
+
+
     }
 }
