@@ -47,11 +47,11 @@ namespace GlazerCalculation
             Display();
         }
 
-        private void widthTxt_KeyUp(object sender, KeyRoutedEventArgs e)
-        {
+        //private void widthTxt_KeyUp(object sender, KeyRoutedEventArgs e)
+        //{
            
 
-        }
+        //}
 
 
         public void Display()
@@ -85,7 +85,7 @@ namespace GlazerCalculation
                 }
                 else if (height < MIN_HEIGHT)
                 {
-                    heightValidation.Text = "Height is too small(Min is 075)";
+                    heightValidation.Text = "Height is too small(Min is 0.75)";
                     woodLengthOutput.Text = "0.00";
                     glassAreaOutput.Text =  "0.00";
                     
@@ -97,8 +97,8 @@ namespace GlazerCalculation
 
                     Glazer glazer = new Glazer(width, height, glassArea, woodLength);
 
-                    woodLengthOutput.Text = woodLength + " feet";
-                    glassAreaOutput.Text = glassArea + " feet";
+                    woodLengthOutput.Text = "The length of the wood is " + woodLength + " feet";
+                    glassAreaOutput.Text =  "The area of the glass is " + glassArea + " square metres";
                 }
 
             }
