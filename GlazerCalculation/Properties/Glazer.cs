@@ -1,4 +1,14 @@
-﻿using System;
+﻿/*****************************************************************
+ * Author: Makram Ibrahim
+ * Instructor: Brother Blazzard
+ * CIT 365 - .NET Software Development
+ * Date: Feb 17, 2018
+ * Summary:
+ *  The purpose of this hands-on programming assignment is to 
+ *  introduce the basics of the UWP application development process
+ *  and to experience XAML design and development methods. 
+ * ***************************************************************/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

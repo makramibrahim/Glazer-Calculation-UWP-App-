@@ -1,6 +1,7 @@
 ﻿using GlazerCalculation.Properties;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -25,25 +26,36 @@ namespace GlazerCalculation
     public sealed partial class MainPage : Page
     {
         /***************************
-         * Declare 
+         * Declare some variables
          * *************************/
-        double width = 0.0;
-        double height = 1;
-        double woodLength = 0.0;
-        double glassArea = 0.0;
+        double width = 0;
+        double height = 0;
+        double woodLength = 0;
+        double glassArea = 0;
 
         public const double MAX_WIDTH = 5.0;
         public const double MIN_WIDTH = 0.5;
         public const double MAX_HEIGHT = 3.0;
         public const double MIN_HEIGHT = 0.75;
 
+        // Store colors input in a list.
+        List<string> tintColor = new List<string>();
+
         public MainPage()
         {
             this.InitializeComponent();
+
+            tintColor.Add("Black");
+            tintColor.Add("Brown");
+            tintColor.Add("Blue");
+
+            TintColor.ItemsSource = tintColor;
+
+            TintColor.SelectedIndex = 0;
         }
 
         /***********************************************************************
-         * 
+         *  Build a voice reader to repeat the out put to the user.
          * *********************************************************************/
         private async void VoiceMessage(string voice)
         {
@@ -55,7 +67,8 @@ namespace GlazerCalculation
         }
 
         /***********************************************************************
-        * 
+        * Display(): Method will call the class glazer and pass all the value
+        * Through the constructor.
         * *********************************************************************/
         public void Display()
         {
@@ -63,22 +76,28 @@ namespace GlazerCalculation
             width = double.Parse(widthTxt.Text);
             height = double.Parse(heightTxt.Text);
 
+      
             Glazer glazer = new Glazer(width, height, glassArea, woodLength);
 
-            woodLength = glazer.WoodLengthCalc();
-            glassArea = glazer.GlassAreaCalc();
+            woodLength = glazer.WoodLengthCalc() * Qunatity.Value;
+            glassArea = glazer.GlassAreaCalc() * Qunatity.Value;
 
-            woodLengthOutput.Text = "The length of the wood is " + woodLength + " feet";
-            glassAreaOutput.Text = "The area of the glass is " + glassArea + " square metres";
+            var colors = TintColor.SelectedValue;
+
+            var date = DateTime.Now.ToString("MM/dd/yyyy");
+
+            woodLengthOutput.Text = "Date " + date + Environment.NewLine + "The length of the wood is " + woodLength + " feet."
+                                               + Environment.NewLine + "The area of the glass is " + glassArea + " square metres"
+                                               + Environment.NewLine + "Selected color is " + colors + Environment.NewLine +
+                                               "Qouantity: " + Qunatity.Value;
 
             VoiceMessage("The length of the wood is " + woodLength + " feet and The area of the glass is " + glassArea + " square metres");
-
 
 
         }
 
         /***********************************************************************
-        * 
+        * Submit Button event will check if the input is there to get the result.
         * *********************************************************************/
         private void SubmitBtn_Click(object sender, RoutedEventArgs e)
         { 
@@ -92,9 +111,9 @@ namespace GlazerCalculation
             }
           
         }
-        /***********************************************************************
-         * 
-         * *********************************************************************/
+        /*********************************
+         *  Validated the width input
+         * ******************************/
 
         private void widthTxt_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -127,9 +146,9 @@ namespace GlazerCalculation
 
         }
 
-        /***********************************************************************
-        * 
-        * *********************************************************************/
+        /***********************************
+        * Validate the height input.
+        * **************************************/
         private void heightTxt_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
