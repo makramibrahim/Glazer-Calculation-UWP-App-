@@ -22,6 +22,18 @@ namespace GlazerCalculation.Properties
             this.WoodLength = woodLength;
         }
 
+       // public Glazer() { }
+
+
+        public double WoodLengthCalc()
+        {
+           return 2 * (Width + Height) * 3.25;
+        }
+
+        public double GlassAreaCalc()
+        {
+            return 2 * (Width + Height);
+        }
 
 
     }
